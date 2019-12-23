@@ -84,55 +84,63 @@
 				 * 客户端对账号信息进行一些必要的校验。
 				 * 实际开发中，根据业务需要进行处理，这里仅做示例。
 				 */
-				uni.request({
-				    url: 'https://www.aehyok.com:1281/api/Blog/TagList', //仅为示例，并非真实接口地址。
-				    data: {
-				        text: 'uni.request'
-				    },
-				    header: {
-				        'custom-header': 'hello' //自定义请求头信息
-				    },
-				    success: (res) => {
-				        console.log(res.data);
-						uni.showToast({
-							icon: 'none',
-							title: res.data
-						});
-				        this.text = 'request success';
-				    }
-				});
+				// uni.request({
+				//     url: 'https://www.aehyok.com:1281/api/Blog/TagList', //仅为示例，并非真实接口地址。
+				//     data: {
+				//         text: 'uni.request'
+				//     },
+				//     header: {
+				//         'custom-header': 'hello' //自定义请求头信息
+				//     },
+				//     success: (res) => {
+				//         console.log(res.data);
+				// 		uni.showToast({
+				// 			icon: 'none',
+				// 			title: res.data
+				// 		});
+				//         this.text = 'request success';
+				//     }
+				// });
 				
-				
+				let code=''
 				wx.login({
 				//获取code
 				success: function(res) {
 				code = res.code //返回code
-				console.log(res.code+'wx.code');
+				console.log(res.code+'-----------wx.code');
+				let url='https://api.weixin.qq.com/sns/jscode2session?appid=wxee56cef40c22fe81&secret=8be45655c00b7a62a417aea43e30fbb9&js_code='+ code +'&grant_type=authorization_code';
+				console.log(url);
+				wx.request({
+				url: url,
+				data: {},
+				header: {
+				'content-type': 'application/json'
+				},
+				success: function(res) {
+					console.log(res);
+				let openid = res.data.openid //返回openid
+				console.log(openid+'-----------------openid');
+				
+				uni.login({
+				    provider: 'weixin',
+				    success: function(loginRes) {	
+						console.log('loginRes');
+						console.log(loginRes);
+					}});
+				}
+				})
 				}
 				});
 
-				// wx.request({
-				// url:'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=’+ code +’&grant_type=authorization_code’,
-				// data: {},
-				// header: {
-				// ‘content-type’: ‘application/json’
-				// },
-				// success: function(res) {
-				// openid = res.data.openid //返回openid
-				// }
-				// })
 				
-				// uni.getUserInfo({
-				//                     provider: 'weixin',
-				//                     success: function(infoRes) {
-				// 						console.log(infoRes);
-				// 					}});
 				
-				uni.login({
-                    provider: 'weixin',
-                    success: function(loginRes) {	
-						console.log(loginRes);
-					}});			
+				uni.getUserInfo({
+				                    provider: 'weixin',
+				                    success: function(infoRes) {
+										console.log(infoRes);
+									}});
+				
+							
 				
 				
 				if (this.phoneNumber.length < 5) {
