@@ -1,5 +1,7 @@
 <template>
 	<view class="content">
+		
+		<button type="button" @tap="bind">测试</button>
 		<view class="input-group">
 			<view class="input-row border">
 				<text class="phoneNumber">手机号码：</text>
@@ -17,7 +19,7 @@
 			</view> -->
 		</view>
 		<view class="btn-row">
-			<button type="primary" class="primary" @tap="bindLogin">绑定</button>
+			<button type="primary" class="primary" @tap="bind">绑定</button>
 		</view>
 	</view>
 </template>
@@ -77,7 +79,16 @@
 				this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
 			},
 			bind(){
+				wx.requestSubscribeMessage({
+				        tmplIds: ["SJKejbRVTcjk5zb5eUIfYBacicIfLobCnkBmNR1H1js"],
+				        success: function (res) {    //成功
+							console.log("成功")
+				        },			
+				        fail(err) {    //失败			
+				            console.error(err);
+				        }
 				
+				})
 			},
 			bindLogin() {
 				/**
@@ -106,30 +117,29 @@
 				wx.login({
 				//获取code
 				success: function(res) {
-				code = res.code //返回code
-				console.log(res.code+'-----------wx.code');
-				let url='https://api.weixin.qq.com/sns/jscode2session?appid=wxee56cef40c22fe81&secret=8be45655c00b7a62a417aea43e30fbb9&js_code='+ code +'&grant_type=authorization_code';
-				console.log(url);
-				wx.request({
-				url: url,
-				data: {},
-				header: {
-				'content-type': 'application/json'
-				},
-				success: function(res) {
-					console.log(res);
-				let openid = res.data.openid //返回openid
-				console.log(openid+'-----------------openid');
-				
-				uni.login({
-				    provider: 'weixin',
-				    success: function(loginRes) {	
-						console.log('loginRes');
-						console.log(loginRes);
-					}});
-				}
-				})
-				}
+					code = res.code //返回code
+					console.log(res.code+'-----------wx.code');
+					let url='https://api.weixin.qq.com/sns/jscode2session?appid=wxee56cef40c22fe81&secret=8be45655c00b7a62a417aea43e30fbb9&js_code='+ code +'&grant_type=authorization_code';
+					console.log(url);
+					wx.request({
+						url: url,
+						data: {},
+						header: {
+						'content-type': 'application/json'
+					},success: function(res) {
+						console.log(res);
+						let openid = res.data.openid //返回openid
+						console.log(openid+'-----------------openid');
+					
+						uni.login({
+							provider: 'weixin',
+							success: function(loginRes) {	
+								console.log('loginRes');
+								console.log(loginRes);
+							}});
+					}
+					})
+					}
 				});
 
 				
