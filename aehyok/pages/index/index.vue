@@ -43,6 +43,31 @@
 </script>
 
 <style lang="scss">
+	page{
+		.cate-section{
+			position:relative;
+			z-index:5;
+			border-radius:16upx 16upx 0 0;
+			margin-top:-20upx;
+		}
+		.carousel-section{
+			padding: 0;
+			.titleNview-placing {
+				padding-top: 0;
+				height: 0;
+			}
+			.carousel{
+				.carousel-item{
+					padding: 0;
+				}
+			}
+			.swiper-dots{
+				left:45upx;
+				bottom:40upx;
+			}
+		}
+	}
+	
 	/* 分类 */
 	.cate-section {
 		display: flex;
