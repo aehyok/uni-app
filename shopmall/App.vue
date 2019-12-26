@@ -19,8 +19,7 @@
 						this.login(res.data);
 					}
 				});
-			}
-			
+			}	
 		},
 		onShow: function() {
 			console.log('App Show')

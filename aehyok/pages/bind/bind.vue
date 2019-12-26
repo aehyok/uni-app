@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		
-		<button type="button" @tap="bind">测试</button>
+		<button type="button" @tap="bind">测试事件</button>
 		<view class="input-group">
 			<view class="input-row border">
 				<text class="phoneNumber">手机号码：</text>
@@ -12,20 +12,14 @@
 				<m-input type="text"  v-model="password" placeholder="请输入手机验证码"></m-input>
 				<view class="validateView">发送验证码</view>
 			</view>
-			
-<!-- 			<view class="input-row">
-				<text class="validateCode">验证码：</text>
-				<m-input type="text" displayable v-model="password" placeholder="请输入手机验证码"></m-input>
-			</view> -->
 		</view>
 		<view class="btn-row">
-			<button type="primary" class="primary" @tap="bind">绑定</button>
+			<button type="primary" class="primary" @tap="bindLogin">绑定</button>
 		</view>
 	</view>
 </template>
 
 <script>
-	import service from '../../service.js';
 	import {
 		mapState,
 		mapMutations
@@ -38,81 +32,46 @@
 		},
 		data() {
 			return {
-				providerList: [],
-				hasProvider: false,
 				phoneNumber: '',
-				password: '',
-				positionTop: 0,
-				isDevtools: false,
+				password: ''
 			}
 		},
-		computed: mapState(['forcedLogin']),
 		methods: {
-			...mapMutations(['login']),
-			initProvider() {
-				const filters = ['weixin', 'qq', 'sinaweibo'];
-				uni.getProvider({
-					service: 'oauth',
-					success: (res) => {
-						if (res.provider && res.provider.length) {
-							for (let i = 0; i < res.provider.length; i++) {
-								if (~filters.indexOf(res.provider[i])) {
-									this.providerList.push({
-										value: res.provider[i],
-										image: '../../static/img/' + res.provider[i] + '.png'
-									});
-								}
-							}
-							this.hasProvider = true;
-						}
-					},
-					fail: (err) => {
-						console.error('获取服务供应商失败：' + JSON.stringify(err));
-					}
-				});
-			},
-			initPosition() {
-				/**
-				 * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
-				 * 反向使用 top 进行定位，可以避免此问题。
-				 */
-				this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
-			},
 			bind(){
 				wx.requestSubscribeMessage({
-				        tmplIds: ["SJKejbRVTcjk5zb5eUIfYBacicIfLobCnkBmNR1H1js"],
-				        success: function (res) {    //成功
-							console.log("成功")
-				        },			
-				        fail(err) {    //失败			
-				            console.error(err);
-				        }
-				
+					tmplIds: ["SJKejbRVTcjk5zb5eUIfYBacicIfLobCnkBmNR1H1js"],
+					success: function (res) {    //成功
+							uni.showToast({
+								icon: 'none',
+								title: '测试事件绑定成功'
+							});
+					},			
+					fail(err) {    //失败			
+						uni.showToast({
+							icon: 'none',
+							title: '测试事件失败'
+						});
+					}
 				})
 			},
 			bindLogin() {
-				/**
-				 * 客户端对账号信息进行一些必要的校验。
-				 * 实际开发中，根据业务需要进行处理，这里仅做示例。
-				 */
-				// uni.request({
-				//     url: 'https://www.aehyok.com:1281/api/Blog/TagList', //仅为示例，并非真实接口地址。
-				//     data: {
-				//         text: 'uni.request'
-				//     },
-				//     header: {
-				//         'custom-header': 'hello' //自定义请求头信息
-				//     },
-				//     success: (res) => {
-				//         console.log(res.data);
-				// 		uni.showToast({
-				// 			icon: 'none',
-				// 			title: res.data
-				// 		});
-				//         this.text = 'request success';
-				//     }
-				// });
 				
+				// if (this.phoneNumber.length < 11 || this.phoneNumber.length > 11) {
+				// 	uni.showToast({
+				// 		icon: 'none',
+				// 		title: '手机格式不正确'
+				// 	});
+				// 	return;
+				// }
+				// if (this.password.length < 6) {
+				// 	uni.showToast({
+				// 		icon: 'none',
+				// 		title: '验证码输入有误，请重新输入'
+				// 	});
+				// 	return;
+				// }
+				var pn=this.phoneNumber;
+				console.log(pn+'-----------wx.code');
 				let code=''
 				wx.login({
 				//获取code
@@ -130,64 +89,66 @@
 						console.log(res);
 						let openid = res.data.openid //返回openid
 						console.log(openid+'-----------------openid');
-					
-						uni.login({
-							provider: 'weixin',
-							success: function(loginRes) {	
-								console.log('loginRes');
-								console.log(loginRes);
-							}});
+						//bindMiniServer(this.phoneNumber,openid);
+						uni.request({
+							url: 'http://www.szsinostar.com:8686/WeiXinApi/Bind?phoneNumber='+pn+'&openId='+openid, //仅为示例，并非真实接口地址。
+							data: {
+							},
+							header: {
+								'custom-header': 'hello' //自定义请求头信息
+							},
+							success: (res) => {
+								console.log(res.data);
+								if(res.data.code=='200')
+								{
+									uni.showToast({
+										icon: 'none',
+										title: '绑定成功！'
+									});
+								}
+								else{
+									uni.showToast({
+										icon: 'none',
+										title: '绑定失败,请联系管理员！'
+									});
+								}
+
+							}
+							});
 					}
 					})
 					}
 				});
 
+										
 				
 				
-				uni.getUserInfo({
-				                    provider: 'weixin',
-				                    success: function(infoRes) {
-										console.log(infoRes);
-									}});
-				
-							
-				
-				
-				if (this.phoneNumber.length < 5) {
-					uni.showToast({
-						icon: 'none',
-						title: '账号最短为 5 个字符'
-					});
-					return;
-				}
-				if (this.password.length < 6) {
-					uni.showToast({
-						icon: 'none',
-						title: '密码最短为 6 个字符'
-					});
-					return;
-				}
+
 				/**
 				 * 下面简单模拟下服务端的处理
 				 * 检测用户账号密码是否在已注册的用户列表中
 				 * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
 				 */
-				const data = {
-					phoneNumber: this.phoneNumber,
-					password: this.password
-				};
-				const validUser = service.getUsers().some(function(user) {
-					return data.phoneNumber === user.phoneNumber && data.password === user.password;
-				});
-				if (validUser) {
-					this.toMain(this.phoneNumber);
-				} else {
-					uni.showToast({
-						icon: 'none',
-						title: '用户账号或密码不正确',
-					});
-				}
+				// const data = {
+				// 	phoneNumber: this.phoneNumber,
+				// 	password: this.password
+				// };
+				// const validUser = service.getUsers().some(function(user) {
+				// 	return data.phoneNumber === user.phoneNumber && data.password === user.password;
+				// });
+				// if (validUser) {
+				// 	this.toMain(this.phoneNumber);
+				// } else {
+				// 	uni.showToast({
+				// 		icon: 'none',
+				// 		title: '用户账号或密码不正确',
+				// 	});
+				// }
 			},
+			bindMiniServer(phoneNumber,openId){
+
+			},
+			
 			oauth(value) {
 				uni.login({
 					provider: value,
@@ -239,15 +200,10 @@
 				} else {
 					uni.navigateBack();
 				}
-
 			}
 		},
 		onReady() {
-			this.initPosition();
-			this.initProvider();
-			// #ifdef MP-WEIXIN
-			this.isDevtools = uni.getSystemInfoSync().platform === 'devtools';
-			// #endif
+			
 		}
 	}
 </script>

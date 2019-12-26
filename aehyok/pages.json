@@ -9,7 +9,7 @@
 	    ,{
             "path" : "pages/index/index",
             "style": {
-            	"navigationBarTitleText": "身份绑定"
+            	"navigationBarTitleText": "首页"
             }
         }
     ],

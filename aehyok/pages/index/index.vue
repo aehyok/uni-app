@@ -74,12 +74,14 @@
 		justify-content: space-around;
 		align-items: center;
 		flex-wrap:wrap;
-		padding: 30upx 22upx; 
+		padding: 30upx 42upx; 
 		background: #fff;
 		.cate-item {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			font-size: $font-sm + 2upx;
+			color: $font-color-dark;
 		}
 		/* 原图标颜色太深,不想改图了,所以加了透明度 */
 		image {
