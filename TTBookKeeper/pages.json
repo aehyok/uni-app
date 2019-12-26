@@ -8,7 +8,9 @@
 		}
 	    ,{
             "path" : "pages/me/me",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "账单"
+			}
         }
         ,{
             "path" : "pages/bill/bill",
@@ -22,11 +24,17 @@
             "path" : "pages/assistant/assistant",
             "style" : {}
         }
+        ,{
+            "path" : "pages/addbill/addbill",
+            "style" : {
+				"navigationBarTitleText": "记账"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTitleText": "糖糖",
+		"navigationBarBackgroundColor": "#0faeff",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
