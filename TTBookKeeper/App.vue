@@ -17,6 +17,6 @@
 /* 	button[type=primary] {
 		background-color: #0faeff;
 	} */
-	
+	@import "./static/css/simplepro.css";
 
 </style>
