@@ -9,7 +9,7 @@
 					<view class="swiper-item example-body">
 						<uni-grid :column="4">
 							<uni-grid-item>
-								<view class="grid-item-box">
+								<view class="grid-item-box"  @tap="showDialogButtom">
 									<image src="/static/temp/c3.png" class="image" mode="aspectFill" />
 									<text class="text">餐饮</text>
 								</view>
@@ -95,7 +95,90 @@
 	<view class="has-pd-18 has-borderb is-center has-mgb-10" @tap="showDialogButtom">底部弹窗</view>
 	<simpleModal ref="showDialogButtom" :buttom="true" contentClass="has-bg-f8" @maskClose="buttomMaskClose" @cancelButton="buttomCancelButton">
 		<view class="has-pd-20">
-			Modal 内容 
+			<view class="example-body">
+				<uni-grid :column="4">
+					<uni-grid-item>
+						<view class="grid-item-box">							
+					<text class="text">7</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">
+							<text class="text">8</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">						
+							<text class="text">9</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">						
+							<text class="text">今天</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">							
+							<text class="text">4</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">						
+							<text class="text">5</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">	
+							<text class="text">6</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">	
+							<text class="text">+</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">							
+							<text class="text">1</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">						
+							<text class="text">2</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">	
+							<text class="text">3</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">	
+							<text class="text">-</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">							
+							<text class="text">.</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">						
+							<text class="text">0</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">	
+							<text class="text">X</text>
+						</view>
+					</uni-grid-item>
+					<uni-grid-item>
+						<view class="grid-item-box">	
+							<text class="text">=完成</text>
+						</view>
+					</uni-grid-item>
+				</uni-grid>
+			</view>
 		</view>
 	</simpleModal>
 	</view>
@@ -177,7 +260,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: 15px 0;
+		padding: 5px 0;
 	}
 
 	.grid-dot {
