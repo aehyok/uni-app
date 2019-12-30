@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<navigator url="../addbill/addbill" open-type="redirect" hover-class="other-navigator-hover">
-			<button type="primary" plain="true">记一笔</button>
+			<button type="default" >记一笔</button>
 		</navigator>
 	</view>
 </template>
@@ -32,5 +32,9 @@
 
 	.padding-top-button{
 		padding-top: 25rpx;
+	}
+	button.primary{
+		height: 28px;
+		margin-top: 10px;
 	}
 </style>

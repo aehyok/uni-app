@@ -18,5 +18,6 @@
 		background-color: #0faeff;
 	} */
 	@import "./static/css/simplepro.css";
-
+/* 	@import "colorui/main.css";
+    @import "colorui/icon.css"; */
 </style>

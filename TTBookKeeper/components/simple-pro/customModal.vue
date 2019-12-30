@@ -56,7 +56,7 @@
 		data() {
 			return {
 				showConfirmButton:true, // 确认按钮
-				showCancelButton:false, // 取消按钮
+				showCancelButton:true, // 取消按钮
 				confirmButtonText:"确定",// 确定按钮文字
 				cancelButtonText:"取消",//取消按钮文字
 				isVisibility:false, //是否显示 

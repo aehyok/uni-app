@@ -2262,6 +2262,10 @@ a {
 	padding: 20rpx !important;
 }
 
+.has-pd-15 {
+	padding: 15rpx !important;
+}
+
 .has-pdtb-10 {
 	padding-top: 20rpx !important;
 	padding-bottom: 20rpx !important;

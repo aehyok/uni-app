@@ -92,92 +92,95 @@
 			</swiper>
 		</view>
 	
-	<view class="has-pd-18 has-borderb is-center has-mgb-10" @tap="showDialogButtom">底部弹窗</view>
-	<simpleModal ref="showDialogButtom" :buttom="true" contentClass="has-bg-f8" @maskClose="buttomMaskClose" @cancelButton="buttomCancelButton">
-		<view class="has-pd-20">
-			<view class="example-body">
-				<uni-grid :column="4">
-					<uni-grid-item>
-						<view class="grid-item-box">							
-					<text class="text">7</text>
+	<!-- <view class="has-pd-18 has-borderb is-center has-mgb-10" @tap="showDialogButtom">底部弹窗</view> -->
+	<simpleModal ref="showDialogButtom" :buttom="true" contentClass="has-bg-f8" >
+		<view>
+			Hello World ！！！
+		</view>
+		<view class="has-pd-15">
+			<view class="s-page-wrapper">
+				<view class="s-grids has-bg-white">
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">7</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">
-							<text class="text">8</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">8</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">						
-							<text class="text">9</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">9</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">						
-							<text class="text">今天</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">今天</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">							
-							<text class="text">4</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">4</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">						
-							<text class="text">5</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">5</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">	
-							<text class="text">6</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">6</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">	
-							<text class="text">+</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">+</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">							
-							<text class="text">1</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">1</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">						
-							<text class="text">2</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">2</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">	
-							<text class="text">3</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">3</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">	
-							<text class="text">-</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">-</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">							
-							<text class="text">.</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">.</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">						
-							<text class="text">0</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">0</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">	
-							<text class="text">X</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">X</view>
 						</view>
-					</uni-grid-item>
-					<uni-grid-item>
-						<view class="grid-item-box">	
-							<text class="text">=完成</text>
+					</view>
+					<view class="is-grid is-grid-4 is-a is-center">
+						<view class="has-pd-15">
+							<view class="is-size-14">完成</view>
 						</view>
-					</uni-grid-item>
-				</uni-grid>
+					</view>
+				</view>
 			</view>
 		</view>
 	</simpleModal>
@@ -235,7 +238,8 @@
 			},
 			showDialogButtom:function(){
 				this.$refs.showDialogButtom.show({
-					showCancelButton:true,
+					showCancelButton:false,
+					showConfirmButton:false,
 				});
 			},
 			buttomMaskClose:function(){
