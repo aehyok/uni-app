@@ -1,9 +1,9 @@
 {
-    "name" : "ColorUi for UniApp",
+    "name" : "PYZX",
     "appid" : "",
     "description" : "",
-    "versionName" : "ColorUi for UniApp 2.1.4",
-    "versionCode" : 214,
+    "versionName" : "V0.0.1",
+    "versionCode" : 1,
     "transformPx" : false,
     "app-plus" : {
         /* 5+App特有相关 */
