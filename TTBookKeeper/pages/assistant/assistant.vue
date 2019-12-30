@@ -1,6 +1,6 @@
 <template>
 	<view>
-		Hello World
+		Test
 	</view>
 </template>
 
