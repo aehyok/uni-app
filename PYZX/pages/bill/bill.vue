@@ -10,18 +10,42 @@
 			</view>
 		</scroll-view>
 		<block v-if="TabCur==0">
-			<view class="bg-white padding">
-				<view class="grid margin-bottom text-center col-4 cu-list">
-					<view class="padding cu-item">
-						1
+			<view class="cu-list grid col-4 no-border">
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
 					</view>
-					<view class="padding">2</view>
-					<view class="padding bg-cyan">3</view>
-					<view class="padding bg-blue">4</view> 
-					<view class="padding bg-cyan">5</view>
-					<view class="padding bg-blue">6</view>
-					<view class="padding bg-cyan">7</view>
-					<view class="padding bg-blue">8</view>
+					<text>餐饮</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>日用</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>房租</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>贷款</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>加油</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>其他</text>
 				</view>
 			</view>
 		</block>
@@ -29,48 +53,70 @@
 			<view class="cu-list grid col-4 no-border">
 				<view class="cu-item">
 					<view class="cuIcon-cardboardfill text-red">
-					<view class="cu-tag badge">99+</view>
+						<!-- <view class="cu-tag badge">99+</view> -->
 					</view>
-					<text>
-					VR
-					</text>
-			</view>
-			<view class="cu-item">
-			<view class="cuIcon-recordfill text-orange">
-			<view class="cu-tag badge"></view>
-			</view>
-			<text>
-			录像
-			</text>
-			</view>
-			<view class="cu-item">
-			<view class="cuIcon-picfill text-yellow"></view>
-			<text>
-			图像
-			</text>
-			</view>
-			<view class="cu-item">
-			<view class="cuIcon-noticefill text-olive">
-			<view class="cu-tag badge">22</view>
-			</view>
-			<text>
-			通知
-			</text>
-			</view>
-			<view class="cu-item">
-			<view class="cuIcon-upstagefill text-cyan"></view>
-			<text>
-			排行榜
-			</text>
-			</view>
-			<view class="cu-item">
-			<view class="cuIcon-clothesfill text-blue"></view>
-			<text>
-			皮肤
-			</text>
-			</view>
+					<text>工资</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>房租</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>理财</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>礼金</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>其他</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>设置</text>
+				</view>
 			</view>
 		</block>
+		<view class="borderbottom">
+			<form>
+				<view class="cu-form-group">
+					<view class="title">备注:</view>
+					<input placeholder="点击写备注" name="remark"></input>
+					
+					<input placeholder="0.00"  class='cu-btn shadow' v-model="amount" name="amount"></input>
+				</view>
+			</form>
+			<view class="grid margin-bottom text-center col-4">
+				<view class="padding" @tap="eventNumber(7)">7</view>
+				<view class="padding" @tap="eventNumber(8)">8</view>
+				<view class="padding" @tap="eventNumber(9)">9</view>
+				<view class="padding" >今天</view>
+				<view class="padding" @tap="eventNumber(4)">4</view>
+				<view class="padding" @tap="eventNumber(5)">5</view>
+				<view class="padding" @tap="eventNumber(6)">6</view>
+				<view class="padding" >+</view>
+				<view class="padding" @tap="eventNumber(1)">1</view>
+				<view class="padding" @tap="eventNumber(2)">2</view>
+				<view class="padding" @tap="eventNumber(3)">3</view>
+				<view class="padding" @tap="eventNumber()">-</view>
+				<view class="padding" @tap="eventNumber()">.</view>
+				<view class="padding" @tap="eventNumber(0)">0</view>
+				<view class="padding" @tap="clearNumber">X</view>
+				<view class="padding" >完成</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -90,6 +136,7 @@
 				autoplay: false,
 				interval: 2000,
 				duration: 500,
+				amount:0
 			};
 		},
 		methods: {
@@ -97,11 +144,32 @@
 				this.TabCur = e.currentTarget.dataset.id;
 				this['current_content']=this.TabCur;
 				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60
+			},
+			eventNumber(value){
+				this.amount=this.amount+""+value;
+			},
+			clearNumber(){
+				this.amount=0;
 			}
 		}
 	}
 </script>
 
 <style>
-
+	.borderbottom{
+		border: 1px solid lightgray;
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+	}
+	.border{
+		
+	}
+	.fontsize{
+		font-size: $uni-font-size-lg;
+	}
+	
+	.shadowright{
+		right: 0;
+	}
 </style>
