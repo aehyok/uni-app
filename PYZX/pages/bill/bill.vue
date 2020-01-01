@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
-			<block slot="backText">返回</block>
+			<block slot="backText" @tap="backTo()" >返回</block>
 			<block slot="content">记账</block>
 		</cu-custom>
 		<scroll-view scroll-x class="bg-white nav text-center">
@@ -16,6 +16,12 @@
 						<!-- <view class="cu-tag badge">99+</view> -->
 					</view>
 					<text>餐饮</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>孩子</text>
 				</view>
 				<view class="cu-item">
 					<view class="cuIcon-cardboardfill text-red">
@@ -46,6 +52,12 @@
 						<!-- <view class="cu-tag badge">99+</view> -->
 					</view>
 					<text>其他</text>
+				</view>
+				<view class="cu-item">
+					<view class="cuIcon-cardboardfill text-red">
+						<!-- <view class="cu-tag badge">99+</view> -->
+					</view>
+					<text>设置</text>
 				</view>
 			</view>
 		</block>
@@ -150,6 +162,12 @@
 			},
 			clearNumber(){
 				this.amount=0;
+			},
+			backTo(){
+				uni.redirectTo({
+					url: './home'
+				});
+				console.log('回到home');
 			}
 		}
 	}
