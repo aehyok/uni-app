@@ -1,7 +1,9 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
-			<block slot="backText" @tap="backTo()" >返回</block>
+		<cu-custom bgColor="bg-gradual-blue" isBack="true">
+			<block slot="backText" @tap="backTo()">
+				<text class="cuIcon-back"></text>返回
+			</block>
 			<block slot="content">记账</block>
 		</cu-custom>
 		<scroll-view scroll-x class="bg-white nav text-center">

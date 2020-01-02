@@ -143,6 +143,50 @@
 		position: relative;
 		z-index: 1;
 	}
+	
+	.nav-li-2 {
+		padding: 30upx;
+		border-radius: 12upx;
+		width: 100%;
+		margin: 0 2.5% 40upx;
+		background-image: url(https://cdn.nlark.com/yuque/0/2019/png/280374/1552996358352-assets/web-upload/cc3b1807-c684-4b83-8f80-80e5b8a6b975.png);
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		z-index: 1;
+	}
+	
+	.nav-li-2::after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		background-color: inherit;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		bottom: -10%;
+		border-radius: 10upx;
+		opacity: 0.2;
+		transform: scale(0.9, 0.9);
+	}
+	
+	.nav-li-2.cur {
+		color: #fff;
+		background: rgb(94, 185, 94);
+		box-shadow: 4upx 4upx 6upx rgba(94, 185, 94, 0.4);
+	}
+	
+	.nav-li-2 text {
+		position: absolute;
+		right: 30upx;
+		top: 30upx;
+		font-size: 52upx;
+		width: 60upx;
+		height: 60upx;
+		text-align: center;
+		line-height: 60upx;
+	}
+	
 
 	.nav-li::after {
 		content: "";
