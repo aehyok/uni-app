@@ -18,11 +18,15 @@
 				</view>
 				<view :class="PageCur=='detail'?'text-blue':'text-gray'">账单</view>
 			</view>
-			<view class="action text-gray add-action" @click="NavChange" data-cur="bill">
+<!-- 			<view class="action text-gray add-action" @click="NavChange" data-cur="bill">
 				<view class='cuIcon-cu-image'>
 					<image :src="'https://www.aehyok.com/images/tabbar/bill_cur.png'"></image>
 				</view>
 				<view :class="PageCur=='bill'?'text-green':'text-gray'">记账</view>
+			</view> -->
+			<view class="action text-gray add-action">
+				<button class="cu-btn cuIcon-add bg-blue shadow" @tap="recordBill"></button>
+				发布
 			</view>
 			<view class="action" @click="NavChange" data-cur="drip">
 				<view class='cuIcon-cu-image'>
@@ -50,6 +54,11 @@
 		methods: {
 			NavChange: function(e) {
 				this.PageCur = e.currentTarget.dataset.cur
+			},
+			recordBill:function(){
+				uni.redirectTo({
+					url: '../bill/bill'
+				});
 			}
 		}
 	}
