@@ -16,7 +16,7 @@
 				<view class='cuIcon-cu-image'>
 					<image :src="'https://www.aehyok.com/images/tabbar/detail' + [PageCur=='detail'?'_cur':''] + '.png'"></image>
 				</view>
-				<view :class="PageCur=='detail'?'text-blue':'text-gray'">明细</view>
+				<view :class="PageCur=='detail'?'text-blue':'text-gray'">账单</view>
 			</view>
 			<view class="action text-gray add-action" @click="NavChange" data-cur="bill">
 				<view class='cuIcon-cu-image'>
