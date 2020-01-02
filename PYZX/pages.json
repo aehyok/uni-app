@@ -121,6 +121,14 @@
             "path" : "pages/bill/me",
             "style" : {}
         }
+        ,{
+            "path" : "pages/bill/drip",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/index/home",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {
@@ -137,8 +145,8 @@
 		"condition": { //模式配置，仅开发期间生效
 		"current": 0, //当前激活的模式(list 的索引项)
 		"list": [{
-				"name": "表单", //模式名称
-				"path": "pages/bill/home", //启动页面
+				"name": "首页", //模式名称
+				"path": "pages/index/index", //启动页面
 				"query": "" //启动参数
 			}
 		]

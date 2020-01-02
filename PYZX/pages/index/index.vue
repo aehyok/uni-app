@@ -1,26 +1,40 @@
 <template>
 	<view>
-		<basics v-if="PageCur=='basics'"></basics>
-		<components v-if="PageCur=='component'"></components>
-		<plugin v-if="PageCur=='plugin'"></plugin>
+		<home v-if="PageCur=='home'"></home>
+		<detail v-if="PageCur=='detail'"></detail>
+		<bill v-if="PageCur=='bill'"></bill>
+		<drip v-if="PageCur=='drip'"></drip>
+		<me v-if="PageCur=='me'"></me>
 		<view class="cu-bar tabbar bg-white shadow foot">
-			<view class="action" @click="NavChange" data-cur="basics">
+			<view class="action" @click="NavChange" data-cur="home">
 				<view class='cuIcon-cu-image'>
-					<image :src="'/static/tabbar/basics' + [PageCur=='basics'?'_cur':''] + '.png'"></image>
+					<image :src="'https://www.aehyok.com/images/tabbar/home' + [PageCur=='home'?'_cur':''] + '.png'"></image>
 				</view>
-				<view :class="PageCur=='basics'?'text-green':'text-gray'">元素</view>
+				<view :class="PageCur=='home'?'text-blue':'text-gray'">首页</view>
 			</view>
-			<view class="action" @click="NavChange" data-cur="component">
+			<view class="action" @click="NavChange" data-cur="detail">
 				<view class='cuIcon-cu-image'>
-					<image :src="'/static/tabbar/component' + [PageCur == 'component'?'_cur':''] + '.png'"></image>
+					<image :src="'https://www.aehyok.com/images/tabbar/detail' + [PageCur=='detail'?'_cur':''] + '.png'"></image>
 				</view>
-				<view :class="PageCur=='component'?'text-green':'text-gray'">组件</view>
+				<view :class="PageCur=='detail'?'text-blue':'text-gray'">明细</view>
 			</view>
-			<view class="action" @click="NavChange" data-cur="plugin">
+			<view class="action text-gray add-action" @click="NavChange" data-cur="bill">
 				<view class='cuIcon-cu-image'>
-					<image :src="'/static/tabbar/plugin' + [PageCur == 'plugin'?'_cur':''] + '.png'"></image>
+					<image :src="'https://www.aehyok.com/images/tabbar/bill_cur.png'"></image>
 				</view>
-				<view :class="PageCur=='plugin'?'text-green':'text-gray'">扩展</view>
+				<view :class="PageCur=='bill'?'text-green':'text-gray'">记账</view>
+			</view>
+			<view class="action" @click="NavChange" data-cur="drip">
+				<view class='cuIcon-cu-image'>
+					<image :src="'https://www.aehyok.com/images/tabbar/drip' + [PageCur == 'drip'?'_cur':''] + '.png'"></image>
+				</view>
+				<view :class="PageCur=='drip'?'text-green':'text-gray'">点滴</view>
+			</view>
+			<view class="action" @click="NavChange" data-cur="me">
+				<view class='cuIcon-cu-image'>
+					<image :src="'https://www.aehyok.com/images/tabbar/me' + [PageCur == 'me'?'_cur':''] + '.png'"></image>
+				</view>
+				<view :class="PageCur=='me'?'text-green':'text-gray'">我的</view>
 			</view>
 		</view>
 	</view>
@@ -30,7 +44,7 @@
 	export default {
 		data() {
 		return {
-				PageCur: 'basics'
+				PageCur: 'home'
 			}
 		},
 		methods: {

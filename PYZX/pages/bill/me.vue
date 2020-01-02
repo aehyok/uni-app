@@ -1,15 +1,21 @@
-<template>
+<template name="me">
 	<view>
+		<cu-custom bgColor="bg-gradual-blue" isBack="false">
+			<block slot="backText" @tap="backTo()">
+				<text class="cuIcon-back"></text>返回
+			</block>
+			<block slot="content">我的</block>
+		</cu-custom>
 		<scroll-view scroll-y class="scrollPage">
 		  <view class="UCenter-bg">
 		    <image src="/static/logo.png" class="png" mode="widthFix"></image>
-		    <view class="text-xl">ColorUI组件库
+		    <view class="text-xl">
 		      <text class="text-df">v2.0</text>
 		    </view>
 		    <view class="margin-top-sm">
-		      <text>By:文晓港</text>
+		      <text>By:aehyok</text>
 		    </view>
-		    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+		    <image src="https://www.aehyok.com/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 		  </view>
 		  <view class="padding flex text-center text-grey bg-white shadow-warp">
 		    <view class="flex flex-sub flex-direction solid-right">
@@ -30,27 +36,27 @@
 		  </view>
 		  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 		    <view class="cu-item arrow">
-		      <view class="content" bindtap="CopyLink" data-link="https://github.com/weilanwl/ColorUI">
+		      <view class="content" bindtap="CopyLink" data-link="https://github.com/aehyok/uni-app">
 		        <text class="cuIcon-github text-grey"></text>
-		        <text class="text-grey">GitHub</text>
+		        <text class="text-grey">我的账单</text>
 		      </view>
 		    </view>
 		    <view class="cu-item arrow">
 		      <navigator class="content" url="/pages/about/about/about" hover-class="none">
-		        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-		        <text class="text-grey">关于ColorUI组件库</text>
+		        <image src="/static/logo.png" class="png" mode="aspectFit"></image>
+		        <text class="text-grey">我的工具</text>
 		      </navigator>
 		    </view>
 		    <view class="cu-item arrow">
 		      <navigator class="content" url="/pages/about/log/log" hover-class="none">
 		        <text class="cuIcon-formfill text-green"></text>
-		        <text class="text-grey">日志</text>
+		        <text class="text-grey">我的签到</text>
 		      </navigator>
 		    </view>
 		    <view class="cu-item arrow">
 		      <view class="content" bindtap="showQrcode">
 		        <text class="cuIcon-appreciatefill text-red"></text>
-		        <text class="text-grey">赞赏支持</text>
+		        <text class="text-grey">我的提醒</text>
 		      </view>
 		    </view>
 		    <view class="cu-item arrow">
@@ -62,12 +68,13 @@
 		    <view class="cu-item arrow">
 		      <navigator class="content" url="/pages/about/test/list" hover-class="none">
 		        <text class="cuIcon-creativefill text-orange"></text>
-		        <text class="text-grey">Bug测试</text>
+		        <text class="text-grey">测试</text>
 		      </navigator>
 		    </view>
 		  </view>
 		  <view class="cu-tabbar-height"></view>
 		</scroll-view>
+		
 	</view>
 </template>
 
@@ -86,7 +93,7 @@
 
 <style>
 .UCenter-bg {
-  background-image: url(https://image.weilanwl.com/color2.0/index.jpg);
+  background-image: url(https://www.aehyok.com/images/me.jpg);
   background-size: cover;
   height: 550rpx;
   display: flex;

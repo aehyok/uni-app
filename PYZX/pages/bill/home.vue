@@ -1,4 +1,4 @@
-<template>
+<template name="home">
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" isBack="true">
 			<block slot="backText" @tap="backTo()">
@@ -8,6 +8,35 @@
 		<scroll-view scroll-y class="page">
 			<image src="https://www.aehyok.com/images/home.png"
 			 mode="widthFix" class="response"></image>
+			 <view class="cu-bar bg-white solid-bottom">
+			 	<view class="action">
+			 		<text class="cuIcon-title text-orange"></text> 2020年1月份度账单
+			 	</view>
+			 	<view class="action">
+			 		<button class="cu-btn bg-blue shadow" @tap="showModal" data-target="Modal">设置预算</button>
+			 	</view>
+			 </view>
+			 <view class="padding flex justify-between align-center">
+			 	<view class="grid  col-4 ">
+			 					<view class="padding-xs borderSet bgaColor text-shadow">单位（元）</view>
+			 		<view class="padding-xs text-center borderSet bgaColor text-white" >实际</view>
+			 		<view class="padding-xs text-center borderSet bgaColor text-white" >预算</view>
+			 					<view class="padding-xs text-center borderSet bgaColor text-white" >差额</view>
+			 		<view class="padding-xs borderSet" >收入</view>
+			 		<view class="padding-xs borderSet" >150000</view>
+			 		<view class="padding-xs borderSet" >150000</view>
+			 					<view class="padding-xs borderSet" >150000</view>
+			 		<view class="padding-xs borderSet" >支出</view>
+			 		<view class="padding-xs borderSet" >150000</view>
+			 		<view class="padding-xs borderSet" >150000</view>
+			 					<view class="padding-xs borderSet" >150000</view>
+			 					<view class="padding-xs borderSet" >差额</view>
+			 					<view class="padding-xs borderSet" >150000</view>
+			 					<view class="padding-xs borderSet" >150000</view>
+			 					<view class="padding-xs borderSet" ></view>
+			 	</view>
+			 </view>
+			 
 			 <view class="cu-bar bg-white">
 			 	<view class='action'>
 			 		<text class='cuIcon-title text-blue'></text>2020年年度账单
@@ -34,61 +63,26 @@
 					</navigator>
 				 </view>
 			 </view>
-			 <view class="cu-bar bg-white solid-bottom">
-			 	<view class="action">
-			 		<text class="cuIcon-title text-orange"></text> 2020年1月份度账单
-			 	</view>
-			 	<view class="action">
-			 		<button class="cu-btn bg-blue shadow" @tap="setBudget">设置预算</button>
-			 	</view>
-			 </view>
-			 <view class="padding flex justify-between align-center">
-			 	<view class="grid  col-4 ">
-					<view class="padding-xs borderSet bgaColor text-shadow">单位（元）</view>
-			 		<view class="padding-xs text-center borderSet bgaColor text-white" >实际</view>
-			 		<view class="padding-xs text-center borderSet bgaColor text-white" >预算</view>
-					<view class="padding-xs text-center borderSet bgaColor text-white" >差额</view>
-			 		<view class="padding-xs borderSet" >收入</view>
-			 		<view class="padding-xs borderSet" >150000</view>
-			 		<view class="padding-xs borderSet" >150000</view>
-					<view class="padding-xs borderSet" >150000</view>
-			 		<view class="padding-xs borderSet" >支出</view>
-			 		<view class="padding-xs borderSet" >150000</view>
-			 		<view class="padding-xs borderSet" >150000</view>
-					<view class="padding-xs borderSet" >150000</view>
-					<view class="padding-xs borderSet" >差额</view>
-					<view class="padding-xs borderSet" >150000</view>
-					<view class="padding-xs borderSet" >150000</view>
-					<view class="padding-xs borderSet" ></view>
-			 	</view>
-			 </view>
+			 
 			 
 			 <view class="cu-tabbar-height"></view>
 		</scroll-view>
-		<view class="cu-bar tabbar bg-white foot">
-			<view class="action text-green">
-				<view class="cuIcon-homefill"></view> 首页
-			</view>
-			<view class="action text-gray">
-				<view class="cuIcon-similar"></view> 明细
-			</view>
-			<view class="action text-gray add-action">
-				<button class="cu-btn cuIcon-add bg-green shadow" @tap="recordBill"></button>
-				记账
-			</view>
-			<view class="action text-gray">
-				<view class="cuIcon-cart">
-					<view class="cu-tag badge">99</view>
+		
+		
+		<view class="cu-modal" :class="modalName=='Modal'?'show':''">
+			<view class="cu-dialog">
+				<view class="cu-bar bg-white justify-end">
+					<view class="content">预算规划</view>
+					<view class="action" @tap="hideModal">
+						<text class="cuIcon-close text-red"></text>
+					</view>
 				</view>
-				点滴
-			</view>
-			<view class="action text-gray" @tap="abountMe">
-				<view class="cuIcon-my">
-					<view class="cu-tag badge"></view>
+				<view class="padding-xl">
+					Modal 内容。
 				</view>
-				我的
 			</view>
-		</view>	
+		</view>
+		
 	</view>
 </template>
 
@@ -96,19 +90,7 @@
 	export default {
 		data() {
 			return {
-				elements: [{
-						title: '收入（元）',
-						name: '150000',
-						color: 'cyan',
-						cuIcon: 'newsfill'
-					},
-					{
-						title: '支出（元）',
-						name: '150000',
-						color: 'blue',
-						cuIcon: 'colorlens'
-					}
-				],
+				modalName: null
 			};
 		},
 		methods: {
@@ -124,6 +106,17 @@
 			},
 			setBudget(){
 				
+			},
+			showModal(e) {
+				this.modalName = e.currentTarget.dataset.target
+			},
+			hideModal(e) {
+				this.modalName = null
+			},
+			backTo(){
+				uni.redirectTo({
+					url: '../index/home'
+				});
 			}
 		}
 	}
