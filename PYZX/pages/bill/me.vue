@@ -42,9 +42,9 @@
 		      </view>
 		    </view>
 		    <view class="cu-item arrow">
-		      <navigator class="content" url="/pages/about/about/about" hover-class="none">
+		      <navigator class="content" url="/pages/bill/moment" hover-class="none">
 		        <image src="/static/logo.png" class="png" mode="aspectFit"></image>
-		        <text class="text-grey">我的工具</text>
+		        <text class="text-grey">朋友圈</text>
 		      </navigator>
 		    </view>
 		    <view class="cu-item arrow">

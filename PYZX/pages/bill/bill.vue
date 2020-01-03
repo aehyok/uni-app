@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
-			<block slot="backText" >返回</block>
+			<block slot="backText" @tap="backTo()">返回</block>
 			<block slot="content">记账</block>
 		</cu-custom>
 		<scroll-view scroll-x class="bg-white nav text-center">
@@ -164,9 +164,10 @@
 				this.amount=0;
 			},
 			backTo(){
-				uni.redirectTo({
-					url: './home'
-				});
+				// uni.redirectTo({
+				// 	url: './home'
+				// });
+				uni.navigateBack();
 				console.log('回到home');
 			}
 		}

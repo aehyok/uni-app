@@ -1,64 +1,59 @@
 <template name="drip">
-	<view>
-		<cu-custom bgColor="bg-gradual-blue" isBack="false">
-			<block slot="backText" @tap="backTo()">
-				<text class="cuIcon-back"></text>返回
-			</block>
-			<block slot="content">
-				<view>发现</view>
-			</block>
-		</cu-custom>
-		<scroll-view scroll-y class="scrollPage">
-			<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-				<view class="cu-item margin-bottom">
-				  <navigator class="content" url="/pages/bill/moment" hover-class="none">
-					<image src="/static/logo.png" class="png" mode="aspectFit"></image>
-					<text class="text-grey">朋友圈</text>
-				  </navigator>
+	<view id="moments">
+		<view class="home-pic">
+			<view class="home-pic-base">
+				<view class="top-pic">
+					<image style="box-sizing:content-box;" class="header" src="https://www.aehyok.com/images/moment/test/header06.jpg" @tap="test"></image>
 				</view>
-				
-				<view class="cu-item">
-				  <view class="content" bindtap="CopyLink" data-link="https://github.com/aehyok/uni-app">
-					<text class="cuIcon-github text-grey"></text>
-					<text class="text-grey">每日计划</text>
-				  </view>
+				<view class="top-name">aehyok</view>
+			</view>
+		</view>
+
+		<view class="moments__post" v-for="(post,index) in posts" :key="index" :id="'post-'+index">
+			<view class="post-left">
+				<image class="post_header" :src="post.header_image"></image>
+			</view>
+
+			<view class="post_right">
+				<text class="post-username">{{post.username}}</text>
+				<view id="paragraph" class="paragraph">{{post.content.text}}</view>
+				<!-- 相册 -->
+				<view class="thumbnails">
+					<view :class="post.content.images.length === 1?'my-gallery':'thumbnail'" v-for="(image, index_images) in post.content.images" :key="index_images">
+						<image class="gallery_img" lazy-load mode="aspectFill" :src="image" :data-src="image" @tap="previewImage(post.content.images,index_images)"></image>
+					</view>
 				</view>
-				
-				<view class="cu-item margin-bottom">
-				  <navigator class="content" url="/pages/about/log/log" hover-class="none">
-					<text class="cuIcon-formfill text-green"></text>
-					<text class="text-grey">旅游计划</text>
-				  </navigator>
+				<!-- 资料条 -->
+				<view class="toolbar">
+					<view class="timestamp">{{post.timestamp}}</view>
+					<view class="like" @tap="like(index)">
+						<image style="box-sizing:content-box;" :src="post.islike===0?'https://www.aehyok.com/images/moment/islike.png':'https://www.aehyok.com/images/moment/like.png'"></image>
+					</view>
+					<view class="comment" @tap="comment(index)">
+						<image style="box-sizing:content-box;" src="https://www.aehyok.com/images/moment/comment.png"></image>
+					</view>
 				</view>
-				<view class="cu-item">
-				  <view class="content" bindtap="showQrcode">
-					<text class="cuIcon-appreciatefill text-red"></text>
-					<text class="text-grey">还款提醒</text>
-				  </view>
-				</view>
-				<view class="cu-item margin-bottom">
-				  <button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">借款提醒</text>
-				  </button>
-				</view>
-				
-				<view class="cu-item margin-bottom">
-				  <button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">临时提醒</text>
-				  </button>
-				</view>
-				<view class="cu-item margin-bottom">
-				  <button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">儿童成长</text>
-				  </button>
+				<!-- 赞／评论区 -->
+				<view class="post-footer">
+					<view class="footer_content">
+						<image class="liked" src="https://www.aehyok.com/images/moment/liked.png"></image>
+						<text class="nickname" v-for="(user,index_like) in post.like" :key="index_like">{{user.username}}</text>
+					</view>
+					<view class="footer_content" v-for="(comment,comment_index) in post.comments.comment" :key="comment_index" @tap="reply(index,comment_index)">
+						<text class="comment-nickname">{{comment.username}}: <text class="comment-content">{{comment.content}}</text></text>
+					</view>
 				</view>
 			</view>
-			<view class="cu-tabbar-height"></view>
-		</scroll-view>
+			<!-- 结束 post -->
+		</view>
+
+		<view class="foot" v-show="showInput">
+			<chat-input @send-message="send_comment" @blur="blur" :focus="focus" :placeholder="input_placeholder"></chat-input>
+			<!-- <chat-input @send-message="send_comment" @blur="blur" :placeholder="input_placeholder"></chat-input> -->
+		</view>
+		<view class="uni-loadmore" v-if="showLoadMore">{{loadMoreText}}</view>
 	</view>
+
 </template>
 
 <script>
@@ -264,52 +259,6 @@
 	}
 </script>
 
-<style>
-.UCenter-bg {
-  background-image: url(https://www.aehyok.com/images/me.jpg);
-  background-size: cover;
-  height: 550rpx;
-  display: flex;
-  justify-content: center;
-  padding-top: 40rpx;
-  overflow: hidden;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
-  font-weight: 300;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-}
-
-.UCenter-bg text {
-  opacity: 0.8;
-}
-
-.UCenter-bg image {
-  width: 200rpx;
-  height: 200rpx;
-}
-
-.UCenter-bg .gif-wave{
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  z-index: 99;
-  mix-blend-mode: screen;  
-  height: 100rpx;   
-}
-
-map,.mapBox{
-  left: 0;
-  z-index: 99;
-  mix-blend-mode: screen;  
-  height: 100rpx;   
-}
-
-map,.mapBox{
-  width: 750rpx;
-  height: 300rpx;
-}
+<style scoped>
+	@import url("../../common/index/index.css");
 </style>
-

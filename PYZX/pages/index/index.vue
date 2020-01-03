@@ -32,7 +32,7 @@
 				<view class='cuIcon-cu-image'>
 					<image :src="'https://www.aehyok.com/images/tabbar/drip' + [PageCur == 'drip'?'_cur':''] + '.png'"></image>
 				</view>
-				<view :class="PageCur=='drip'?'text-green':'text-gray'">点滴</view>
+				<view :class="PageCur=='drip'?'text-green':'text-gray'">发现</view>
 			</view>
 			<view class="action" @click="NavChange" data-cur="me">
 				<view class='cuIcon-cu-image'>
