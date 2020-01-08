@@ -1,55 +1,53 @@
 <template name="drip">
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" isBack="false">
-			<block slot="backText" @tap="backTo()">
-				<text class="cuIcon-back"></text>返回
-			</block>
+
 			<block slot="content">
 				<view>发现</view>
 			</block>
 		</cu-custom>
 		<scroll-view scroll-y class="scrollPage">
 			<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-				<view class="cu-item margin-bottom">
+				<view class="cu-item margin-bottom arrow">
 				  <navigator class="content" url="/pages/bill/moment" hover-class="none">
 					<image src="/static/logo.png" class="png" mode="aspectFit"></image>
 					<text class="text-grey">朋友圈</text>
 				  </navigator>
 				</view>
 				
-				<view class="cu-item">
+				<view class="cu-item arrow">
 				  <view class="content" bindtap="CopyLink" data-link="https://github.com/aehyok/uni-app">
 					<text class="cuIcon-github text-grey"></text>
 					<text class="text-grey">每日计划</text>
 				  </view>
 				</view>
 				
-				<view class="cu-item margin-bottom">
+				<view class="cu-item margin-bottom arrow">
 				  <navigator class="content" url="/pages/about/log/log" hover-class="none">
 					<text class="cuIcon-formfill text-green"></text>
 					<text class="text-grey">旅游计划</text>
 				  </navigator>
 				</view>
-				<view class="cu-item">
+				<view class="cu-item arrow">
 				  <view class="content" bindtap="showQrcode">
 					<text class="cuIcon-appreciatefill text-red"></text>
 					<text class="text-grey">还款提醒</text>
 				  </view>
 				</view>
-				<view class="cu-item margin-bottom">
+				<view class="cu-item margin-bottom arrow">
 				  <button class="cu-btn content" open-type="feedback">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">借款提醒</text>
 				  </button>
 				</view>
 				
-				<view class="cu-item margin-bottom">
+				<view class="cu-item margin-bottom arrow">
 				  <button class="cu-btn content" open-type="feedback">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">临时提醒</text>
 				  </button>
 				</view>
-				<view class="cu-item margin-bottom">
+				<view class="cu-item margin-bottom arrow">
 				  <button class="cu-btn content" open-type="feedback">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">儿童成长</text>

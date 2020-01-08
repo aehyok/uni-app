@@ -1,12 +1,9 @@
 <template name="detail">
 	<view>
-		<cu-custom bgColor="bg-gradual-blue" isBack="true">
-			<block slot="backText" @tap="backTo()">
-				<text class="cuIcon-back"></text>返回
-			</block>
+		<cu-custom bgColor="bg-gradual-blue" isBack="false">
+
 			<block slot="content">
 				<view>明细</view>
-				<view>图标</view>
 			</block>
 		</cu-custom>
 		<view class="cu-bar bg-white solid-bottom-2 text-xs">
