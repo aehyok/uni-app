@@ -133,6 +133,18 @@
             "path" : "pages/bill/moment",
             "style" : {}
         }
+        ,{
+            "path" : "pages/find/find",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/find/everyplan",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/find/payplan",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {

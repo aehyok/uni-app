@@ -15,11 +15,11 @@
 				  </navigator>
 				</view>
 				
-				<view class="cu-item arrow">
-				  <view class="content" bindtap="CopyLink" data-link="https://github.com/aehyok/uni-app">
-					<text class="cuIcon-github text-grey"></text>
-					<text class="text-grey">每日计划</text>
-				  </view>
+				<view class="cu-item arrow">		  
+					<navigator class="content" url="/pages/find/everyplan" hover-class="none">
+						<image src="/static/logo.png" class="png" mode="aspectFit"></image>
+						<text class="text-grey">每日计划</text>
+					</navigator>
 				</view>
 				
 				<view class="cu-item margin-bottom arrow">
@@ -28,12 +28,14 @@
 					<text class="text-grey">旅游计划</text>
 				  </navigator>
 				</view>
+				
 				<view class="cu-item arrow">
-				  <view class="content" bindtap="showQrcode">
-					<text class="cuIcon-appreciatefill text-red"></text>
-					<text class="text-grey">还款提醒</text>
-				  </view>
+					<navigator class="content" url="/pages/find/payplan" hover-class="none">
+						<text class="cuIcon-appreciatefill text-red"></text>
+						<text class="text-grey">还款提醒</text>
+					</navigator>
 				</view>
+				
 				<view class="cu-item margin-bottom arrow">
 				  <button class="cu-btn content" open-type="feedback">
 					<text class="cuIcon-writefill text-cyan"></text>
