@@ -37,10 +37,10 @@
 				</view>
 				
 				<view class="cu-item margin-bottom arrow">
-				  <button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">借款提醒</text>
-				  </button>
+					<navigator class="content" url="/pages/find/borrowplan" hover-class="none">
+						<text class="cuIcon-writefill text-cyan"></text>
+						<text class="text-grey">借款提醒</text>
+					</navigator>
 				</view>
 				
 				<view class="cu-item margin-bottom arrow">

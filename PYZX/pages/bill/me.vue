@@ -1,9 +1,6 @@
 <template name="me">
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" isBack="false">
-			<block slot="backText" @tap="backTo()">
-				<text class="cuIcon-back"></text>返回
-			</block>
 			<block slot="content">我的</block>
 		</cu-custom>
 		<scroll-view scroll-y class="scrollPage">
